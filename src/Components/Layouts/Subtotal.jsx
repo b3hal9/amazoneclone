@@ -16,7 +16,7 @@ const Subtotal = () => {
                 renderText={(value) => (
                     <>
                         <p>
-                            Subtotal ({data.number || 0} items):
+                            Subtotal ({items.number || 0} items):
                             <strong>{value}</strong>
                         </p>
                         <small className="subtotal__gift">

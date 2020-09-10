@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export const Header = () => {
-    const dataNumber = useSelector((store) => store.cart.number)
+    const dataNumber = useSelector((store) => store.cart.items)
 
     return (
         <div className="header">
@@ -37,7 +37,7 @@ export const Header = () => {
                     <div className="header__optionBasket">
                         <ShoppingCartIcon />
                         <span className="header__optionLineTwo header__basketCount">
-                            {dataNumber || 0}
+                            {dataNumber.length || 0}
                         </span>
                     </div>
                 </Link>

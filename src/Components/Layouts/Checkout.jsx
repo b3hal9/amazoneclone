@@ -1,7 +1,12 @@
 import React from 'react'
 import '../../CSS/checkout.css'
 import Subtotal from './Subtotal'
+import { useSelector } from 'react-redux'
+import CheckoutProducts from './CheckoutProducts'
+
 const Checkout = () => {
+    const data = useSelector((store) => store.cart)
+    const { items } = data
     return (
         <div className="checkout">
             <div className="checkout__left">
@@ -12,6 +17,15 @@ const Checkout = () => {
                 />
                 <div>
                     <h2 className="checkout__title">Your Shopping Basket</h2>
+                    {items.map((item) => (
+                        <CheckoutProducts
+                            id={item.id}
+                            title={item.title}
+                            image={item.image}
+                            price={item.price}
+                            rating={item.rating}
+                        />
+                    ))}
                     {/* items */}
                 </div>
             </div>
