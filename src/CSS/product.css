@@ -14,17 +14,11 @@
 
 .product .product__info > img {
     max-height: 200px;
+    height: 150px;
     width: 100%;
     object-fit: contain;
     margin-bottom: 15px;
 }
-
-/*
-.product__info {
-    height: 100px;
-    margin-bottom: 15px;
-}
-*/
 
 .product__price {
     margin-top: 5px;
