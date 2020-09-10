@@ -9,6 +9,7 @@ const Main = (props) => {
         <Router>
             <div>
                 <Header />
+
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/checkout" component={Checkout} />

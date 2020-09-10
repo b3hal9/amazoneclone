@@ -1,16 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../CSS/header.css'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import { Link } from 'react-router-dom'
-
-import { addItemToCart } from '../../redux/actions/addCartAction'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export const Header = () => {
-    const [basket, setBasket] = useState([])
-
-    const items = useSelector((state) => state)
+    const dataNumber = useSelector((store) => store.cart.number)
 
     return (
         <div className="header">
@@ -41,7 +37,7 @@ export const Header = () => {
                     <div className="header__optionBasket">
                         <ShoppingCartIcon />
                         <span className="header__optionLineTwo header__basketCount">
-                            {items.number}
+                            {dataNumber || 0}
                         </span>
                     </div>
                 </Link>

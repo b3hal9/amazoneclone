@@ -4,13 +4,11 @@ import CurrencyFormat from 'react-currency-format'
 import { useSelector } from 'react-redux'
 
 const Subtotal = () => {
-    const items = useSelector((state) => state.items)
-    // console.log(items)
+    const data = useSelector((store) => store.cart)
 
-    // const TotalPrice = items.foreach((item) => {
-    //     let s = 0
-    //     s += item.price
-    // })
+    console.log(data)
+    const { items } = data
+    const totalprice = items.reduce((amount, item) => item.price + amount, 0)
 
     return (
         <div className="subtotal">
@@ -18,8 +16,8 @@ const Subtotal = () => {
                 renderText={(value) => (
                     <>
                         <p>
-                            Subtotal ({0} items):
-                            <strong>{0}</strong>
+                            Subtotal ({data.number || 0} items):
+                            <strong>{value}</strong>
                         </p>
                         <small className="subtotal__gift">
                             <input type="checkbox" />
@@ -28,7 +26,7 @@ const Subtotal = () => {
                     </>
                 )}
                 decimalScale={2}
-                value={0}
+                value={totalprice}
                 displayType={'text'}
                 thousandSeparator={true}
                 prefix={'$'}
