@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 const firebaseConfig = {
     apiKey: 'AIzaSyD_qSS77Xh1loo0a6Jq1-R5VSnBGeepe7A',
     authDomain: 'eclone-87d2b.firebaseapp.com',
@@ -9,5 +11,15 @@ const firebaseConfig = {
     measurementId: 'G-1CB2CDMB94',
 }
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
-firebase.analytics()
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+// firebase.analytics()
+
+const db = firebaseApp.firestore()
+const auth = firebase.auth()
+
+export { db, auth }
+
+//firebase login
+//firebase init
+//npm run build
+//firebase deploy

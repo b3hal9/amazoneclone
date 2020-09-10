@@ -1,20 +1,20 @@
-import { ADD_TO_CART, DELETE_PRODUCT } from '../actions/types'
+import { ADD_USER, DELETE_USER } from '../actions/types'
 
 const initialState = {
-    items: [],
+    user: null,
 }
 
 export default function (state = initialState, { type, payload }) {
     switch (type) {
-        case ADD_TO_CART:
+        case ADD_USER:
             return {
                 ...state,
-                items: [...state.items, payload.item],
+                user: payload,
             }
-        case DELETE_PRODUCT:
+        case DELETE_USER:
             return {
                 ...state,
-                items: state.items.filter((item) => item.id !== payload),
+                user: null,
             }
 
         default:

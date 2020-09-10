@@ -4,10 +4,17 @@ import SearchIcon from '@material-ui/icons/Search'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { auth } from '../../Config/Firebase'
 
 export const Header = () => {
     const dataNumber = useSelector((store) => store.cart.items)
+    const user = useSelector((store) => store.user.user)
 
+    const handleAuth = () => {
+        if (user) {
+            auth.signOut()
+        }
+    }
     return (
         <div className="header">
             <Link to="/">
@@ -21,10 +28,16 @@ export const Header = () => {
                 <SearchIcon className="header__searchIcon" />
             </div>
             <div className="header__nav">
-                <div className="header__option">
-                    <span className="header__optionLineOne">Hello Guest</span>
-                    <span className="header__optionLineTwo">Sign In</span>
-                </div>
+                <Link to={!user && '/login'}>
+                    <div onClick={handleAuth} className="header__option">
+                        <span className="header__optionLineOne">
+                            {user ? 'Hello' + user?.email : 'Hello Guest'}
+                        </span>
+                        <span className="header__optionLineTwo">
+                            {user ? `SignOut` : `SignIn`}
+                        </span>
+                    </div>
+                </Link>
                 <div className="header__option">
                     <span className="header__optionLineOne">Returns</span>
                     <span className="header__optionLineTwo">& Orders</span>
