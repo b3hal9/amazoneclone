@@ -2,10 +2,12 @@ import React from 'react'
 import '../../CSS/subtotal.css'
 import CurrencyFormat from 'react-currency-format'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const Subtotal = () => {
     const data = useSelector((store) => store.cart)
-
+    const user = useSelector((store) => store.user.user)
+    const history = useHistory()
     console.log(data)
     const { items } = data
     const totalprice = items.reduce((amount, item) => item.price + amount, 0)
@@ -16,7 +18,8 @@ const Subtotal = () => {
                 renderText={(value) => (
                     <>
                         <p>
-                            Subtotal ({items.length || 0} items):
+                            Subtotal ({items.length || 0}
+                            {''} items):
                             <strong>{value}</strong>
                         </p>
                         <small className="subtotal__gift">
@@ -31,7 +34,13 @@ const Subtotal = () => {
                 thousandSeparator={true}
                 prefix={'$'}
             />
-            <button>Proceed to Checkout</button>
+            <button
+                onClick={(e) =>
+                    user ? history.push('/payment') : history.push('/login')
+                }
+            >
+                Proceed to Checkout
+            </button>
         </div>
     )
 }

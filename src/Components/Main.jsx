@@ -7,6 +7,7 @@ import Login from './Auth/Login'
 import { useDispatch } from 'react-redux'
 import { auth } from '../Config/Firebase'
 import { addUser, deleteUser } from '../redux/actions/userAction'
+import Payment from './Layouts/Payment'
 
 const Main = () => {
     const dispatch = useDispatch()
@@ -20,16 +21,24 @@ const Main = () => {
                 dispatch(deleteUser(authUser))
             }
         })
-    }, [])
+    })
     return (
         <Router>
             <div>
-                <Header />
-
                 <Switch>
                     <Route path="/login" component={Login} />
-                    <Route exact path="/" component={HomePage} />
-                    <Route path="/checkout" component={Checkout} />
+                    <Route path="/payment">
+                        <Header />
+                        <Payment />
+                    </Route>
+                    <Route exact path="/">
+                        <Header />
+                        <HomePage />
+                    </Route>
+                    <Route path="/checkout">
+                        <Header />
+                        <Checkout />
+                    </Route>
                 </Switch>
             </div>
         </Router>

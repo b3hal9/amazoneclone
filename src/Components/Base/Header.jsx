@@ -21,6 +21,7 @@ export const Header = () => {
                 <img
                     id="header__logo"
                     src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                    alt="logo"
                 />
             </Link>
             <div className="header__search">
@@ -31,7 +32,7 @@ export const Header = () => {
                 <Link to={!user && '/login'}>
                     <div onClick={handleAuth} className="header__option">
                         <span className="header__optionLineOne">
-                            {user ? 'Hello' + user?.email : 'Hello Guest'}
+                            Hello {''} {user ? user?.email : 'Guest'}
                         </span>
                         <span className="header__optionLineTwo">
                             {user ? `SignOut` : `SignIn`}

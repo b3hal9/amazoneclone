@@ -6,6 +6,7 @@ node_modules
 .pnp.js
 .gitignore
 Firebase.js
+.env
 # testing
 /coverage
 

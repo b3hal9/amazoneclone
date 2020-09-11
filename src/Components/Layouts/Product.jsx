@@ -2,15 +2,12 @@ import React from 'react'
 import '../../CSS/product.css'
 import StarIcon from '@material-ui/icons/Star'
 
-// import { useStateValue } from '../StateProver'
 import { useDispatch } from 'react-redux'
 import { addItemToCart } from '../../redux/actions/addCartAction'
 
 const Product = ({ title, image, price, rating, id }) => {
     const dispatch = useDispatch()
     const addToBasket = () => {
-        //dispatch the item into the data layer
-
         dispatch(
             addItemToCart({
                 item: {
